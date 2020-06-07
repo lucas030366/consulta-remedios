@@ -36,8 +36,8 @@ export default {
   //   tarefa.concluido = !tarefa.concluido
   //   dispatch("editarTarefa", { tarefa })
   // },
-  selecionarTarefa: ({ commit }, payload) => {
-    commit("selecionarTarefa", payload)
+  selecionarProduto: ({ commit }, payload) => {
+    commit("selecionarProduto", payload)
   },
   // resetarTarefaSelecionada: ({ commit }) => {
   //   return commit("selecionarTarefa", { tarefa: null })

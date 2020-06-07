@@ -10,7 +10,8 @@
 			<h6 class="blue-text font-open-sans font-weight-bold font-16">{{formatCurrency(produto.price)}}</h6>
 		</div>
 		<div class="effect py-4 mt-4">
-			<a class="font-open-sans font-weight-bold font-16 pointer">
+			<div v-if="exist" class="alert alert-warning mb-0">adicionado ao carrinho</div>
+			<a v-else @click="addCart(produto)" class="font-open-sans font-weight-bold font-16 pointer">
 				<span class="blue-text">adicionar ao carrinho</span>
 			</a>
 		</div>
@@ -22,12 +23,35 @@ import * as mdb from "mdbvue";
 
 import FormatCurrencyMixin from "@/mixins/format-currency";
 
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("ecommerce");
+
 export default {
 	name: "ProductListItem",
 	mixins: [FormatCurrencyMixin],
 	components: { ...mdb },
 	props: {
 		produto: Object
+	},
+	data() {
+		return {
+			exist: false
+		};
+	},
+	methods: {
+		...mapActions(["selecionarProduto"]),
+		addCart(produto) {
+			const exist = this.cart.findIndex(pdt => pdt.id === produto.id);
+
+			if (exist == -1) {
+				this.selecionarProduto({ produto });
+			} else {
+				this.exist = true;
+			}
+		}
+	},
+	computed: {
+		...mapState(["cart"])
 	}
 };
 </script>
@@ -70,5 +94,8 @@ export default {
 }
 .pointer {
 	cursor: pointer;
+}
+.alert {
+	top: 19px;
 }
 </style>

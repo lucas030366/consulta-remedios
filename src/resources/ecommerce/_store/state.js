@@ -1,6 +1,7 @@
 export default {
   produtos: [],
-  tarefaSelecionada: null,
+  produtoSelecionado: null,
+  cart: [],
   erro: null,
   exibirForm: false
 }

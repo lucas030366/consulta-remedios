@@ -24,7 +24,7 @@ export default {
 	name: "Index",
 	components: { ...mdb, ProductListItem },
 	methods: {
-		...mapActions(["listarProdutos"])
+		...mapActions(["listarProdutos"]),
 	},
 	computed: {
 		...mapState(["produtos"])
