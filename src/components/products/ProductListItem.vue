@@ -10,7 +10,7 @@
 			<h6 class="blue-text font-open-sans font-weight-bold font-16">{{formatCurrency(produto.price)}}</h6>
 		</div>
 		<div class="effect py-4 mt-4">
-			<div v-if="exist" class="alert alert-warning mb-0">adicionado ao carrinho</div>
+			<div v-if="exists(produto)" class="alert alert-warning py-2 mb-0">adicionado ao carrinho</div>
 			<a v-else @click="addCart(produto)" class="font-open-sans font-weight-bold font-16 pointer">
 				<span class="blue-text">adicionar ao carrinho</span>
 			</a>
@@ -33,21 +33,17 @@ export default {
 	props: {
 		produto: Object
 	},
-	data() {
-		return {
-			exist: false
-		};
-	},
 	methods: {
 		...mapActions(["selecionarProduto"]),
 		addCart(produto) {
-			const exist = this.cart.findIndex(pdt => pdt.id === produto.id);
-
-			if (exist == -1) {
+			const pdtInCart = this.exists(produto);
+			if (!pdtInCart) {
 				this.selecionarProduto({ produto });
-			} else {
-				this.exist = true;
 			}
+		},
+		exists(produto) {
+			const pdtInCart = this.cart.findIndex(pdt => pdt.id === produto.id);
+			return pdtInCart === -1 ? false : true;
 		}
 	},
 	computed: {
@@ -96,6 +92,6 @@ export default {
 	cursor: pointer;
 }
 .alert {
-	top: 19px;
+	top: 16px;
 }
 </style>

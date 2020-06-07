@@ -4,7 +4,12 @@ export default {
   },
   selecionarProduto: (state, { produto }) => {
     state.cart.push(produto)
-  }
+  },
+  deletarProduto: (state, { pdt }) => {
+    const indice = state.cart.findIndex(t => t.id === pdt.id)
+    state.cart.splice(indice, 1)
+
+  },
   // criarTarefa: (state, { tarefa }) => {
   //   return state.tarefas.push(tarefa)
   // },
@@ -12,10 +17,7 @@ export default {
   //   const indice = state.tarefas.findIndex(t => t.id === tarefa.id)
   //   state.tarefas.splice(indice, 1, tarefa)
   // },
-  // deletarTarefa: (state, { tarefa }) => {
-  //   const indice = state.tarefas.findIndex(t => t.id === tarefa.id)
-  //   state.tarefas.splice(indice, 1)
-  // },
+
 
   // setarErro: (state, { erro }) => {
   //   state.erro = erro

@@ -19,26 +19,25 @@ export default {
       })
       .catch(erro => commit("setarErro", { erro }))
   },
+  selecionarProduto: ({ commit }, payload) => {
+    commit("selecionarProduto", payload)
+  },
+  deletarProduto: ({ commit }, payload ) => {
+    commit("deletarProduto", payload)
+  },
   // editarTarefa: ({ commit }, { tarefa }) => {
   //   return ecommerceServices.putTarefa(tarefa)
   //     .then(response => {
   //       commit("editarTarefa", { tarefa: response.data })
   //     })
   // },
-  // deletarTarefa: ({ commit }, { tarefa }) => {
-  //   return ecommerceServices.deleteTarefa(tarefa.id)
-  //     .then(response => {
-  //       commit("deletarTarefa", { tarefa })
-  //     })
-  // },
+
   // concluirTarefa: ({ dispatch }, payload) => {
   //   const tarefa = Object.assign({}, payload.tarefa)
   //   tarefa.concluido = !tarefa.concluido
   //   dispatch("editarTarefa", { tarefa })
   // },
-  selecionarProduto: ({ commit }, payload) => {
-    commit("selecionarProduto", payload)
-  },
+
   // resetarTarefaSelecionada: ({ commit }) => {
   //   return commit("selecionarTarefa", { tarefa: null })
   // },
