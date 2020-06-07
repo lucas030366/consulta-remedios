@@ -1,16 +1,15 @@
 <template>
-	<mdb-container>
-		<div class="py-3">
-			<div>
-				<h3>Games</h3>
-			</div>
+	<div>
+		<div class="mb-4">
+			<h3 class="font-open-sans font-weight-bold font-48">Games</h3>
 		</div>
+
 		<mdb-row>
 			<mdb-col lg="4" v-for="produto in produtos" :key="produto.id">
 				<ProductListItem :produto="produto" />
 			</mdb-col>
 		</mdb-row>
-	</mdb-container>
+	</div>
 </template>
 
 <script>
@@ -35,3 +34,9 @@ export default {
 	}
 };
 </script>
+
+<style>
+.font-48 {
+	font-size: 48px;
+}
+</style>
