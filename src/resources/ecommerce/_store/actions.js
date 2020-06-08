@@ -1,17 +1,6 @@
 import ecommerceServices from "../_services/ecommerceServices"
 
 export default {
-  //  listarTarefas = async ({ commit }) => {
-  //   const response = await ecommerceServices.getTarefas()
-  //   commit("listarTarefas", { tarefas: response.data })
-  //  },
-  // criarTarefa: ({ commit }, { tarefa }) => {
-  //   return ecommerceServices.postTarefa(tarefa)
-  //     .then(response => {
-  //       commit("criarTarefa", { tarefa: response.data })
-  //     })
-  //     .catch(erro => commit("setarErro", { erro }))
-  // },
   listarProdutos: ({ commit }) => {
     return ecommerceServices.getProducts()
       .then(response => {
@@ -22,8 +11,11 @@ export default {
   selecionarProduto: ({ commit }, payload) => {
     commit("selecionarProduto", payload)
   },
-  deletarProduto: ({ commit }, payload ) => {
+  deletarProduto: ({ commit }, payload) => {
     commit("deletarProduto", payload)
+  },
+  filtrarProduto: ({ commit }, payload) => {
+    commit("filtrarProduto", payload)
   },
   // editarTarefa: ({ commit }, { tarefa }) => {
   //   return ecommerceServices.putTarefa(tarefa)

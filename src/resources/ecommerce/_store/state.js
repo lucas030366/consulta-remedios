@@ -1,7 +1,6 @@
 export default {
   produtos: [],
+  produtosFilter: [],
   produtoSelecionado: null,
-  cart: [],
-  erro: null,
-  exibirForm: false
+  cart: []
 }

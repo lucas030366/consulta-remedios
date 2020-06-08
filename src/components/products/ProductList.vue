@@ -3,14 +3,17 @@
 		<div class="mb-4">
 			<mdb-row>
 				<mdb-col lg="8">
-					<h3 class="font-open-sans font-weight-bold font-48">Games</h3>
+					<h3 class="font-open-sans font-weight-bold font-48">Games {{selected}}</h3>
 				</mdb-col>
 				<mdb-col class="my-auto">
-					<select class="browser-default custom-select">
-						<option value="1">Mais Populares</option>
-						<option value="2">Ordem Alfabetica (A - Z)</option>
-						<option value="3">Preço (menor - maior)</option>
-						<option selected value="4">Mais Recentes</option>
+					<select class="browser-default custom-select" v-model="selected">
+						<template v-for="option of select">
+							<option
+								:selected="option.text === 'Mais recentes'"
+								:value="option.value"
+								:key="option.value"
+							>{{ option.text }}</option>
+						</template>
 					</select>
 				</mdb-col>
 			</mdb-row>
@@ -26,7 +29,9 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapActions, mapState } = createNamespacedHelpers("ecommerce");
+const { mapGetters, mapActions, mapState } = createNamespacedHelpers(
+	"ecommerce"
+);
 
 import ProductListItem from "./ProductListItem";
 
@@ -35,11 +40,39 @@ import * as mdb from "mdbvue";
 export default {
 	name: "Index",
 	components: { ...mdb, ProductListItem },
+	data() {
+		return {
+			select: [
+				{ value: 1, text: "Mais populares" },
+				{ value: 2, text: "Ordem alfabetica (A - Z)" },
+				{ value: 3, text: "Preço (menor - maior)" },
+				{ value: 4, text: "Mais recentes" }
+			],
+			selected: 4
+		};
+	},
 	methods: {
-		...mapActions(["listarProdutos"])
+		...mapActions(["listarProdutos", "filtrarProduto"])
 	},
 	computed: {
-		...mapState(["produtos"])
+		...mapState(["produtos", "produtosFilter"]),
+		...mapGetters(["produtosRecentes", "produtosPorNome"]),
+		filter() {
+			let produtosFiltro = null;
+
+			switch (this.selected) {
+				case 4:
+					produtosFiltro = this.filtrarProduto(this.produtos);
+					break;
+				case 2:
+					produtosFiltro = this.produtosPorNome;
+					break;
+
+				default:
+					break;
+			}
+			return produtosFiltro;
+		}
 	},
 	created() {
 		this.listarProdutos();
