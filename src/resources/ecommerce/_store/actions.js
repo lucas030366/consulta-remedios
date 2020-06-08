@@ -14,8 +14,8 @@ export default {
   deletarProduto: ({ commit }, payload) => {
     commit("deletarProduto", payload)
   },
-  filtrarProduto: ({ commit }, payload) => {
-    commit("filtrarProduto", payload)
+  filtrarProduto: ({ commit }, type ) => {
+    commit("filtrarProduto", type)
   },
   // editarTarefa: ({ commit }, { tarefa }) => {
   //   return ecommerceServices.putTarefa(tarefa)

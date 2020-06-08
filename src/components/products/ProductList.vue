@@ -3,7 +3,7 @@
 		<div class="mb-4">
 			<mdb-row>
 				<mdb-col lg="8">
-					<h3 class="font-open-sans font-weight-bold font-48">Games {{selected}}</h3>
+					<h3 class="font-open-sans font-weight-bold font-48">Games</h3>
 				</mdb-col>
 				<mdb-col class="my-auto">
 					<select class="browser-default custom-select" v-model="selected">
@@ -20,7 +20,7 @@
 		</div>
 
 		<mdb-row>
-			<mdb-col lg="4" v-for="produto in produtos" :key="produto.id">
+			<mdb-col lg="4" v-for="produto in filter" :key="produto.id">
 				<ProductListItem :produto="produto" />
 			</mdb-col>
 		</mdb-row>
@@ -45,10 +45,13 @@ export default {
 			select: [
 				{ value: 1, text: "Mais populares" },
 				{ value: 2, text: "Ordem alfabetica (A - Z)" },
-				{ value: 3, text: "Preço (menor - maior)" },
-				{ value: 4, text: "Mais recentes" }
+				{ value: 3, text: "Ordem alfabetica (Z - A)" },
+				{ value: 4, text: "Preço (menor - maior)" },
+				{ value: 5, text: "Preço (maior - menor)" },
+				{ value: 6, text: "Mais recentes" }
 			],
-			selected: 4
+			products: [],
+			selected: 6
 		};
 	},
 	methods: {
@@ -61,11 +64,28 @@ export default {
 			let produtosFiltro = null;
 
 			switch (this.selected) {
-				case 4:
-					produtosFiltro = this.filtrarProduto(this.produtos);
+				case 1:
+					this.filtrarProduto(1);
+					produtosFiltro = this.produtosFilter;
 					break;
 				case 2:
-					produtosFiltro = this.produtosPorNome;
+					this.filtrarProduto(2);
+					produtosFiltro = this.produtosFilter;
+					break;
+				case 3:
+					this.filtrarProduto(3);
+					produtosFiltro = this.produtosFilter;
+					break;
+				case 4:
+					this.filtrarProduto(4);
+					produtosFiltro = this.produtosFilter;
+					break;
+				case 5:
+					this.filtrarProduto(5);
+					produtosFiltro = this.produtosFilter;
+					break;
+				case 6:
+					produtosFiltro = this.produtos;
 					break;
 
 				default:
