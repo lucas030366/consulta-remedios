@@ -5,7 +5,6 @@ const currencyFormater = ({locale, currency} = {locale: "pt-BR", currency: "BRL"
   })
 }
 
-
 export {
   currencyFormater
 }

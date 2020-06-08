@@ -36,6 +36,10 @@
 								{{ formatCurrency(total) }}
 							</span>
 						</h5>
+
+						<div class="mt-3">
+							<button class="btn btn-blue font-weight-bold btn-block font-open-sans font-14 btn-lg">finalizar compra</button>
+						</div>
 					</div>
 				</div>
 				<div v-else class="view p-3 mx-auto text-center">
@@ -102,10 +106,14 @@ export default {
 	font-size: 14px;
 }
 .min-height {
-	min-height: 309px;
+	min-height: 317px;
 }
 .black-cart {
 	color: #423b3b;
+}
+.btn-blue {
+	background-color: #54A3FF;
+	color: #fff !important;
 }
 </style>
 

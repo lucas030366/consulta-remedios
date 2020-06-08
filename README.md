@@ -1,5 +1,12 @@
 # ecommerce
 
+### API DB (simulação do banco de dados)
+```
+cd db
+
+npm start
+```
+
 ## Project setup
 ```
 npm install

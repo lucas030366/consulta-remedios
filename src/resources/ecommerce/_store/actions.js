@@ -14,27 +14,8 @@ export default {
   deletarProduto: ({ commit }, payload) => {
     commit("deletarProduto", payload)
   },
-  filtrarProduto: ({ commit }, type ) => {
+  filtrarProduto: ({ commit }, type) => {
     commit("filtrarProduto", type)
-  },
-  // editarTarefa: ({ commit }, { tarefa }) => {
-  //   return ecommerceServices.putTarefa(tarefa)
-  //     .then(response => {
-  //       commit("editarTarefa", { tarefa: response.data })
-  //     })
-  // },
-
-  // concluirTarefa: ({ dispatch }, payload) => {
-  //   const tarefa = Object.assign({}, payload.tarefa)
-  //   tarefa.concluido = !tarefa.concluido
-  //   dispatch("editarTarefa", { tarefa })
-  // },
-
-  // resetarTarefaSelecionada: ({ commit }) => {
-  //   return commit("selecionarTarefa", { tarefa: null })
-  // },
-  // exibirFormulario: ({ commit }, exibir) => {
-  //   commit("exibirFormulario", exibir)
-  // }
+  }
 
 }
