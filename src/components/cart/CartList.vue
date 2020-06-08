@@ -38,9 +38,9 @@
 						</h5>
 
 						<div class="mt-3">
-							<button
-								class="btn btn-blue-cart btn-block font-open-sans font-14 btn-lg"
-							><small class="font-weight-bold ">finalizar compra</small></button>
+							<button class="btn btn-blue-cart btn-block font-open-sans font-14 btn-lg">
+								<small class="font-weight-bold">finalizar compra</small>
+							</button>
 						</div>
 					</div>
 				</div>
