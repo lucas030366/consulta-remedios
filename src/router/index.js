@@ -1,21 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import App from '../App'
-import Error404 from '../views/Error404'
+const App = () => import("../views/Index")
+const Error = () => import('@/views/Erro')
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    redirect: "/produtos"
+  },
+  {
+    path: '/produtos',
     component: App
   },
   {
-    path: "*",
-    component: Error404
-  }
+    path: '*',
+    redirect: '/erro'
+  },
+  {
+    path: '/erro',
+    component: Error
+  },
 ]
 
 const router = new VueRouter({

@@ -17,8 +17,8 @@
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers("ecommerce");
 
-import ProductList from "./products/ProductList";
-import CartList from "./cart/CartList";
+import ProductList from "@/components/products/ProductList";
+import CartList from "@/components/cart/CartList";
 
 import * as mdb from "mdbvue";
 
