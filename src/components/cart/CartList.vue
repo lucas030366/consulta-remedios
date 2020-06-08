@@ -32,13 +32,15 @@
 
 						<h5 class="font-open-sans font-14 new-grey my-4">
 							total
-							<span class="float-right font-open-sans font-weight-bold font-20 black-cart">
-								{{ formatCurrency(total) }}
-							</span>
+							<span
+								class="float-right font-open-sans font-weight-bold font-20 black-cart"
+							>{{ formatCurrency(total) }}</span>
 						</h5>
 
 						<div class="mt-3">
-							<button class="btn btn-blue font-weight-bold btn-block font-open-sans font-14 btn-lg">finalizar compra</button>
+							<button
+								class="btn btn-blue-cart btn-block font-open-sans font-14 btn-lg"
+							><small class="font-weight-bold ">finalizar compra</small></button>
 						</div>
 					</div>
 				</div>
@@ -74,8 +76,6 @@ export default {
 			return this.cart.length == 1 ? "item" : "itens";
 		},
 		subTotal() {
-			// Reduce:
-			// [1,2,3,4].reduce((atual, numero) => atual + numero, 0) /*0 é o "atual inicial" p/ comecar*/
 			const subtotal = this.cart.reduce(
 				(atual, numero) => atual + numero.price,
 				0
@@ -83,13 +83,13 @@ export default {
 			return subtotal;
 		},
 		frete() {
-			const freteGratis = 250.00
-			const pdtInCart = this.cart.length
-			const frete = pdtInCart * 10
-			return this.subTotal > freteGratis ? 0.00 : frete;
+			const freteGratis = 250.0;
+			const pdtInCart = this.cart.length;
+			const frete = pdtInCart * 10;
+			return this.subTotal > freteGratis ? 0.0 : frete;
 		},
-		total(){
-			return this.subTotal + this.frete
+		total() {
+			return this.subTotal + this.frete;
 		}
 	}
 };
@@ -111,8 +111,8 @@ export default {
 .black-cart {
 	color: #423b3b;
 }
-.btn-blue {
-	background-color: #54A3FF;
+.btn-blue-cart {
+	background-color: #54a3ff !important;
 	color: #fff !important;
 }
 </style>
